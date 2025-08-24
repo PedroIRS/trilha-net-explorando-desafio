@@ -6,12 +6,7 @@ namespace DesafioProjetoHospedagem.Models
         public Suite Suite { get; set; }
         public int DiasReservados { get; set; }
 
-        public Reserva(List<Pessoas> hospedes, Suite suite, int diasReservados)
-        {
-            Hospedes = hospedes;
-            Suite = suite;
-            DiasReservados = diasReservados;
-        }
+        public Reserva() {}
 
         public Reserva(int diasReservados)
         {
@@ -21,14 +16,13 @@ namespace DesafioProjetoHospedagem.Models
         public void CadastrarHospedes(List<Pessoa> hospedes)
         {
             
-            if (true)
+            if (Hospedes.Count <= Suite.Capacidade)
             {
                 Hospedes = hospedes;
             }
             else
             {
-                // TODO: Retornar uma exception caso a capacidade seja menor que o número de hóspedes recebido
-                // *IMPLEMENTE AQUI*
+                throw new Exeption("Numero de hospedes maior que a capacidade da suite");
             }
         }
 
@@ -39,9 +33,7 @@ namespace DesafioProjetoHospedagem.Models
 
         public int ObterQuantidadeHospedes()
         {
-            // TODO: Retorna a quantidade de hóspedes (propriedade Hospedes)
-            // *IMPLEMENTE AQUI*
-            return 0;
+            return Hopesdes.Count;
         }
 
         public decimal CalcularValorDiaria()
